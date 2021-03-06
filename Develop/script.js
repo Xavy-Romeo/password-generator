@@ -2,7 +2,7 @@
 
 // Create all possible characters for password
 var upper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-var lower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','z'];
+var lower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var number = ['0','1','2','3','4','5','6','7','8','9'];
 var symbol = ['~','!','@','#','$','%','^','&','*','(',')','_','?','+'];
 
@@ -10,13 +10,16 @@ var charsAvailable = [];
 var numbOfChars = 0;
 var password = "";
 var passwordText = document.querySelector("#password");
+result = 0;
 
 function generatePassword() {
   howManyChars();
+  console.log(charsAvailable.length);
+  console.log(upper.length)
  
   for (i = 0; i < numbOfChars; i++) {
-    var result = charsAvailable[i];
-    console.log(result);
+    var result = Math.floor(Math.random() * charsAvailable.length);
+    //console.log(result);
   
     //charsAvailable[i] +=password;
     }
@@ -55,58 +58,58 @@ function passwordOptions() {
     // if u is inputed by user
     if (u) {
         alert(great);
-        charsAvailable.push(upper);
+        charsAvailable = charsAvailable.concat(upper);
         if (l) {
-           charsAvailable.push(lower);
+          charsAvailable = charsAvailable.concat(lower);
            if (n) {
-               charsAvailable.push(number);
+            charsAvailable = charsAvailable.concat(number);
               if (s) {
-                  charsAvailable.push(symbol);
+                charsAvailable = charsAvailable.concat(symbol);
               }
             }
             else if (s) {
-              charsAvailable.push(symbol);
+              charsAvailable = charsAvailable.concat(symbol);
             }
         }
         else if (n) {
-          charsAvailable.push(number);
+          charsAvailable = charsAvailable.concat(number);
           if (s) {
-            charsAvailable.push(symbol);
+            charsAvailable = charsAvailable.concat(symbol);
           }
         }   
         else if (s) {
-          charsAvailable.push(symbol);
+          charsAvailable = charsAvailable.concat(symbol);
         }
     }
     
     // if no u but l is inputed
     else if (l) {
       alert(great);
-      charsAvailable.push(lower);
+      charsAvailable = charsAvailable.concat(lower);
       if (n) {
-        charsAvailable.push(number);
+        charsAvailable = charsAvailable.concat(number);
         if (s) {
-          charsAvailable.push(symbol);
+          charsAvailable = charsAvailable.concat(symbol);
         }      
       }
       else if (s) {
-        charsAvailable.push(symbol);
+        charsAvailable = charsAvailable.concat(symbol);
       }
     }
 
     // if no u nor l but n is inputed
     else if (n) {
       alert(great);
-      charsAvailable.push(number);
+      charsAvailable = charsAvailable.concat(number);
       if (s) {
-        charsAvailable.push(symbol);
+        charsAvailable = charsAvailable.concat(symbol);
       }
     }
 
     // if no u nor l nor n but s is inputed
     else if (s) {
       alert(great);
-      charsAvailable.push(symbol);
+      charsAvailable = charsAvailable.concat(symbol);
     }
 
     // if no u,l,n or s is inputed request valid option
