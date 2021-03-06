@@ -1,23 +1,26 @@
 // Assignment code here
 
 // Create all possible characters for password
-var upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var lower = 'abcdefghijklmnopqrstuvwxyz';
-var number = '0123456789';
-var symbol = '~!@#$%^&*()_';
+var upper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var lower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','z'];
+var number = ['0','1','2','3','4','5','6','7','8','9'];
+var symbol = ['~','!','@','#','$','%','^','&','*','(',')','_','?','+'];
 
-var charsAvailable = '';
+var charsAvailable = [];
 var numbOfChars = 0;
+var password = "";
+var passwordText = document.querySelector("#password");
 
 function generatePassword() {
   howManyChars();
  
   for (i = 0; i < numbOfChars; i++) {
-    Math.floor(Math.random()*charsAvailable.length + 1);
-    password += charsAvailable[i];
-  }
+    var result = charsAvailable[i];
+    console.log(result);
+  
+    //charsAvailable[i] +=password;
+    }
 
-  return password;
   //??? Where to enter generated password???//
   //passwordText.value = "test";
   //password.setItem("test");
@@ -25,10 +28,10 @@ function generatePassword() {
 }
 
 // Ask User how many characters they would like in their password
-function howManyChars(numOfChars) {
-  var numOfChars = prompt('How many characters would you like in your password? Please enter a number between "8" and "128".')
-  
-  if (numOfChars >= 8 && numOfChars <= 128) {
+function howManyChars() {
+  numbOfChars = prompt('How many characters would you like in your password? Please enter a number between "8" and "128".')
+  parseInt(numbOfChars);
+  if (numbOfChars >= 8 && numbOfChars <= 128) {
     passwordOptions();
   }
   else {
@@ -52,58 +55,58 @@ function passwordOptions() {
     // if u is inputed by user
     if (u) {
         alert(great);
-        charsAvailable = charsAvailable + upper;
+        charsAvailable.push(upper);
         if (l) {
-           charsAvailable = charsAvailable + lower;
+           charsAvailable.push(lower);
            if (n) {
-               charsAvailable = charsAvailable + number;
+               charsAvailable.push(number);
               if (s) {
-                  charsAvailable = charsAvailable + symbol;
+                  charsAvailable.push(symbol);
               }
             }
             else if (s) {
-              charsAvailable = charsAvailable + symbol;
+              charsAvailable.push(symbol);
             }
         }
         else if (n) {
-          charsAvailable = charsAvailable + number;
+          charsAvailable.push(number);
           if (s) {
-            charsAvailable = charsAvailable + symbol;
+            charsAvailable.push(symbol);
           }
         }   
         else if (s) {
-          charsAvailable = charsAvailable + symbol;
+          charsAvailable.push(symbol);
         }
     }
     
     // if no u but l is inputed
     else if (l) {
       alert(great);
-      charsAvailable = charsAvailable + lower;
+      charsAvailable.push(lower);
       if (n) {
-        charsAvailable = charsAvailable + number;
+        charsAvailable.push(number);
         if (s) {
-          charsAvailable = charsAvailable + symbol;
+          charsAvailable.push(symbol);
         }      
       }
       else if (s) {
-        charsAvailable = charsAvailable + symbol;
+        charsAvailable.push(symbol);
       }
     }
 
     // if no u nor l but n is inputed
     else if (n) {
       alert(great);
-      charsAvailable = charsAvailable + number;
+      charsAvailable.push(number);
       if (s) {
-        charsAvailable = charsAvailable + symbol;
+        charsAvailable.push(symbol);
       }
     }
 
     // if no u nor l nor n but s is inputed
     else if (s) {
       alert(great);
-      charsAvailable = charsAvailable + symbol;
+      charsAvailable.push(symbol);
     }
 
     // if no u,l,n or s is inputed request valid option
@@ -121,6 +124,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  
 
   passwordText.value = password;
 
