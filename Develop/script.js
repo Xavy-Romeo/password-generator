@@ -46,7 +46,69 @@ function passwordOptions() {
   var n = passOptWant.includes('n');
   var s = passOptWant.includes('s');
   
-  
+    // if u is inputed by user
+    if (u) {
+        alert(great);
+        charsAvailable = charsAvailable + upper;
+        if (l) {
+           charsAvailable = charsAvailable + lower;
+           if (n) {
+               charsAvailable = charsAvailable + number;
+              if (s) {
+                  charsAvailable = charsAvailable + symbol;
+              }
+            }
+            else if (s) {
+              charsAvailable = charsAvailable + symbol;
+            }
+        }
+        else if (n) {
+          charsAvailable = charsAvailable + number;
+          if (s) {
+            charsAvailable = charsAvailable + symbol;
+          }
+        }   
+        else if (s) {
+          charsAvailable = charsAvailable + symbol;
+        }
+    }
+    
+    // if no u but l is inputed
+    else if (l) {
+      alert(great);
+      charsAvailable = charsAvailable + lower;
+      if (n) {
+        charsAvailable = charsAvailable + number;
+        if (s) {
+          charsAvailable = charsAvailable + symbol;
+        }      
+      }
+      else if (s) {
+        charsAvailable = charsAvailable + symbol;
+      }
+    }
+
+    // if no u nor l but n is inputed
+    else if (n) {
+      alert(great);
+      charsAvailable = charsAvailable + number;
+      if (s) {
+        charsAvailable = charsAvailable + symbol;
+      }
+    }
+
+    // if no u nor l nor n but s is inputed
+    else if (s) {
+      alert(great);
+      charsAvailable = charsAvailable + symbol;
+    }
+
+    // if no u,l,n or s is inputed request valid option
+    else {
+      alert("Please enter a valid option.");
+      passwordOptions();
+    }
+     
 }
   
   
