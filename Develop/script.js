@@ -7,18 +7,21 @@ var number = '0123456789';
 var symbol = '~!@#$%^&*()_';
 
 var charsAvailable = '';
+var numbOfChars = 0;
 
 function generatePassword() {
   howManyChars();
-  
+ 
+  for (i = 0; i < numbOfChars; i++) {
+    Math.floor(Math.random()*charsAvailable.length + 1);
+    password += charsAvailable[i];
+  }
+
+  return password;
   //??? Where to enter generated password???//
   //passwordText.value = "test";
   //password.setItem("test");
   //password = document.write("test")
-  
-  // for loop for how many Characters
-      // for (i = 0; i < numbOfChars; i++){}
-
 }
 
 // Ask User how many characters they would like in their password
@@ -110,7 +113,6 @@ function passwordOptions() {
     }
      
 }
-  
   
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
