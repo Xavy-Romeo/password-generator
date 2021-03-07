@@ -8,26 +8,21 @@ var symbol = ['~','!','@','#','$','%','^','&','*','(',')','_','?','+'];
 
 var charsAvailable = [];
 var numbOfChars = 0;
-var password = "";
-var passwordText = document.querySelector("#password");
-result = 0;
+password = "";
 
 function generatePassword() {
   howManyChars();
-  console.log(charsAvailable.length);
-  console.log(upper.length)
  
   for (i = 0; i < numbOfChars; i++) {
-    var result = Math.floor(Math.random() * charsAvailable.length);
-    //console.log(result);
-  
-    //charsAvailable[i] +=password;
-    }
+    var result = charsAvailable[Math.floor((Math.random()*charsAvailable.length))];
+    console.log(result);
+  }
 
-  //??? Where to enter generated password???//
-  //passwordText.value = "test";
-  //password.setItem("test");
-  //password = document.write("test")
+  console.log(typeof(result));
+  //result = string .... now have to enter into password to print????
+
+  // run reset function in case another another password wanted btn name = 'Generate a dif pass'
+  //reset(charsAvailable) note: numbOfChars already reset with new value entered
 }
 
 // Ask User how many characters they would like in their password
