@@ -8,19 +8,15 @@ var symbol = ['~','!','@','#','$','%','^','&','*','(',')','_','?','+'];
 
 var charsAvailable = [];
 var numbOfChars = 0;
-password = "";
+password = '';
 
 function generatePassword() {
   howManyChars();
  
   for (i = 0; i < numbOfChars; i++) {
     password += charsAvailable[Math.floor((Math.random()*charsAvailable.length))];
-    console.log(password);
   }
   return password;
-
-  // run reset function in case another another password wanted btn name = 'Generate a dif pass'
-  //reset(charsAvailable) note: numbOfChars already reset with new value entered
 }
 
 // Ask User how many characters they would like in their password
@@ -112,7 +108,15 @@ function passwordOptions() {
     }
      
 }
+
+// Ask to generate a different password
+function reset() {
+  generateBtn.textContent = "Generate a New Password"
   
+  //reset password to empty string
+  password = '';
+} 
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -124,6 +128,8 @@ function writePassword() {
 
   passwordText.value = password;
 
+  //***added reset function to generate new password***
+  reset();
 }
 
 // Add event listener to generate button
