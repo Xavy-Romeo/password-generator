@@ -14,12 +14,10 @@ function generatePassword() {
   howManyChars();
  
   for (i = 0; i < numbOfChars; i++) {
-    var result = charsAvailable[Math.floor((Math.random()*charsAvailable.length))];
-    console.log(result);
+    password += charsAvailable[Math.floor((Math.random()*charsAvailable.length))];
+    console.log(password);
   }
-
-  console.log(typeof(result));
-  //result = string .... now have to enter into password to print????
+  return password;
 
   // run reset function in case another another password wanted btn name = 'Generate a dif pass'
   //reset(charsAvailable) note: numbOfChars already reset with new value entered
